@@ -130,3 +130,7 @@ MEDIA_URL = "media/"
 LOGOUT_REDIRECT_URL = "webapp:photo_list_view"
 LOGIN_REDIRECT_URL = "webapp:photo_list_view"
 LOGIN_URL = 'accounts:login'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'Vote', 'static')
+# STATIC_URL = '/static/'
+# MEDIA_ROOT = os.path.join(BASE_DIR,STATIC_ROOT,'media')
+# MEDIA_URL = '/media/'

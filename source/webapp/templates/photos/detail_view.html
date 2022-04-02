@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p> {{ photo.photo }}</p>
+    <p><img src="{{ photo.photo.url }}" alt=""></p>
 
     <p>  {{ photo.author }}</p>
     <p>{{ photo.album }}</p>
