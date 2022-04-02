@@ -1,0 +1,52 @@
+[
+{
+  "model": "webapp.photo",
+  "pk": 2,
+  "fields": {
+    "photo": "photos/244.jpg",
+    "signature": "asdfe",
+    "created_at": "2022-04-02T09:45:23.891Z",
+    "author": 1,
+    "album": 1,
+    "private": false,
+    "choose": null
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 3,
+  "fields": {
+    "photo": "photos/pexels-andrea-piacquadio-3774916.jpg",
+    "signature": "fghd",
+    "created_at": "2022-04-02T10:52:13.537Z",
+    "author": 2,
+    "album": null,
+    "private": false,
+    "choose": null
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 1,
+  "fields": {
+    "name": "asdfdfgdfg",
+    "description": "asdf",
+    "author": 1,
+    "created_at": "2022-04-02T06:11:27.001Z",
+    "private": false,
+    "choose": null
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 2,
+  "fields": {
+    "name": "dfghd",
+    "description": "dfght",
+    "author": 1,
+    "created_at": "2022-04-02T10:10:41.911Z",
+    "private": false,
+    "choose": null
+  }
+}
+]
