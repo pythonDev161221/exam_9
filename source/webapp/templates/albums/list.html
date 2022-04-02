@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for album in albums.all %}
+    <p>
     <a href="{% url 'webapp:album_detail_view' album.pk %}">
     {{ album.name }}
     {{ album.description }}
     </a>***
+    </p>
 {#    <a href="{% url 'webapp:photo_update_view' photo.pk %}">update</a> |#}
 {#    <a href="{% url 'webapp:photo_delete_view' photo.pk %}">delete</a>#}
     {% endfor %}
