@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{ user_object.username }}
+    {{ user_object.email }}
+
+    {% for photo in user_object.photos.all %}
+    {% include 'partial/photo_list.html' %}
+    {% endfor %}
+
+{% endblock %}

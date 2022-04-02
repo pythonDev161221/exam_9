@@ -13,6 +13,8 @@ class Photo(models.Model):
     author = models.ForeignKey(User, related_name="photos", on_delete=models.CASCADE)
     album = models.ForeignKey('webapp.Album', related_name="photos", on_delete=models.CASCADE,
                               null=True, blank=True)
+    private = models.BooleanField(default=False)
+    choose = models.ForeignKey(User, related_name='choose_photos', on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class Album(models.Model):
@@ -20,4 +22,6 @@ class Album(models.Model):
     description = models.TextField(max_length=200)
     author = models.ForeignKey(User, related_name='albums', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    private = models.BooleanField(default=False)
+    choose = models.ForeignKey(User, related_name='choose_albums', on_delete=models.SET_NULL, null=True, blank=True)
 
