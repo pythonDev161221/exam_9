@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Photo(models.Model):
-    photo = models.ImageField()
+    photo = models.ImageField(upload_to='photos')
     signature = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, related_name="photos", on_delete=models.CASCADE)
