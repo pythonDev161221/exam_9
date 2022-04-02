@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for photo in photos.all %}
+    <a href="{% url 'webapp:photo_detail_view' photo.pk %}">
+    {{ photo.photo }}
+    {{ photo.signature }}
+    </a>
+    {% endfor %}
+{% endblock %}
