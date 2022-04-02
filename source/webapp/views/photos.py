@@ -1,5 +1,7 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.http import JsonResponse
 from django.urls import reverse, reverse_lazy
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
 from webapp.forms import PhotoForm
@@ -54,3 +56,17 @@ class PhotoDeleteView(PermissionRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse("webapp:photo_list_view")
+
+
+class PhotoAddChoose(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        photo = Photo.objects.get(pk=kwargs.get('pk'))
+        photo.choose.add(self.request.user)
+        return JsonResponse({"choose": f"{photo.choose.count()}", "photo_id": photo.pk})
+
+
+class PhotoRemoveChoose(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        photo = Photo.objects.get(pk=kwargs.get('pk'))
+        photo.choose.remove(self.request.user)
+        return JsonResponse({"choose": f"{photo.choose.count()}", "photo_id": photo.pk})
