@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'webapp',
     'api_v1',
     'accounts',
@@ -130,7 +132,9 @@ MEDIA_URL = "media/"
 LOGOUT_REDIRECT_URL = "webapp:photo_list_view"
 LOGIN_REDIRECT_URL = "webapp:photo_list_view"
 LOGIN_URL = 'accounts:login'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'Vote', 'static')
-# STATIC_URL = '/static/'
-# MEDIA_ROOT = os.path.join(BASE_DIR,STATIC_ROOT,'media')
-# MEDIA_URL = '/media/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
