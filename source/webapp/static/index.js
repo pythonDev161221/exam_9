@@ -8,4 +8,5 @@ async function photoChooseClick(event){
     let id = responsebody.photo_id;
     let div_photo_choose = document.getElementById(`${id}choose`);
     div_photo_choose.innerText = `choosen: ${responsebody.choose}`
+
 }

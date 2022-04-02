@@ -29,7 +29,7 @@
             data-choose-url = {% url 'webapp:photo_add_choose' photo.pk %}
     >Избранные</button>
         <button onclick="photoChooseClick(event)"
-            id = "{{ photo.pk }}choose_btn"
+            id = "{{ photo.pk }}unchoose_btn"
             data-choose-url = {% url 'webapp:photo_remove_choose' photo.pk %}
     >ОтменитьИзбрание</button>
         {% endif %}
