@@ -6,13 +6,13 @@ from webapp.forms import PhotoForm
 from webapp.models import Photo
 
 
-class PhotoListView(ListView):
+class PhotoListView(LoginRequiredMixin, ListView):
     model = Photo
     template_name = 'photos/list_view.html'
     context_object_name = 'photos'
 
 
-class PhotoDetailView(DetailView):
+class PhotoDetailView(LoginRequiredMixin, DetailView):
     model = Photo
     template_name = 'photos/detail_view.html'
     context_object_name = 'photo'
@@ -31,18 +31,26 @@ class PhotoCreateView(LoginRequiredMixin, CreateView):
         return reverse("webapp:photo_list_view")
 
 
-class PhotoUpdateView(LoginRequiredMixin, UpdateView):
+class PhotoUpdateView(PermissionRequiredMixin, UpdateView):
     model = Photo
     template_name = "photos/update_view.html"
     form_class = PhotoForm
+    permission_required = 'webapp.change_photo'
+
+    def has_permission(self):
+        return super().has_permission() or self.get_object().author == self.request.user
 
     def get_success_url(self):
         return reverse("webapp:photo_list_view")
 
 
-class PhotoDeleteView(LoginRequiredMixin, DeleteView):
+class PhotoDeleteView(PermissionRequiredMixin, DeleteView):
     model = Photo
     template_name = "photos/delete.html"
+    permission_required = 'webapp.delete_photo'
+
+    def has_permission(self):
+        return super().has_permission() or self.get_object().author == self.request.user
 
     def get_success_url(self):
         return reverse("webapp:photo_list_view")
