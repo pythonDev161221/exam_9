@@ -1,5 +1,8 @@
-from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView
 
+from webapp.forms import PhotoForm
 from webapp.models import Photo
 
 
@@ -13,3 +16,18 @@ class PhotoDetailView(DetailView):
     model = Photo
     template_name = 'photos/detail_view.html'
     context_object_name = 'photo'
+
+
+class PhotoCreateView(LoginRequiredMixin, CreateView):
+    model = Photo
+    template_name = 'photos/create_view.html'
+    form_class = PhotoForm
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        self.object = form.save()
+        return super().form_valid()
+
+    def get_success_url(self):
+        return reverse("webapp:photo_list_view")
+
