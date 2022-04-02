@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>{{ album.name }}</p>
+    <p>{{ album.author }}</p>
+    <p>{{ album.description }}</p>
+    <p>{{ album.created_at }}</p>
+
+    {% for photo in album.photos.all %}
+    <p><a href="{% url 'webapp:photo_detail_view' photo.pk %}">
+        <img src="{{ photo.photo.url }}" alt="">
+    </a></p>
+    {% endfor %}
+{% endblock content %}
