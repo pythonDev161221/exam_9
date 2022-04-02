@@ -7,9 +7,7 @@
     <p>{{ album.created_at }}</p>
 
     {% for photo in album.photos.all %}
-    <p><a href="{% url 'webapp:photo_detail_view' photo.pk %}">
-        <img src="{{ photo.photo.url }}" alt="">
-    </a></p>
+    {% include 'partial/photo_list.html' %}
     {% endfor %}
 {% endblock content %}
 

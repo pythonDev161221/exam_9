@@ -11,7 +11,8 @@ class Photo(models.Model):
     signature = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, related_name="photos", on_delete=models.CASCADE)
-    album = models.ForeignKey('webapp.Album', related_name="photos", on_delete=models.CASCADE)
+    album = models.ForeignKey('webapp.Album', related_name="photos", on_delete=models.CASCADE,
+                              null=True, blank=True)
 
 
 class Album(models.Model):

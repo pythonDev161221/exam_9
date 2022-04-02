@@ -1,13 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for photo in photos.all %}
-    <p>
-    <a href="{% url 'webapp:photo_detail_view' photo.pk %}">
-    {{ photo.author }}
-    {{ photo.signature }}
-    </a>***
-    <a href="{% url 'webapp:photo_update_view' photo.pk %}">update</a> |
-    <a href="{% url 'webapp:photo_delete_view' photo.pk %}">delete</a>
-    </p>
+    {% include 'partial/photo_list.html' %}
     {% endfor %}
 {% endblock %}

@@ -1,0 +1,14 @@
+<p>
+    <a href="{% url 'webapp:photo_detail_view' photo.pk %}">
+    {{ photo.author }}
+    {{ photo.signature }}
+        {{ photo.created_at }}
+    </a>
+        |
+        {% if photo.album %}
+        <a href="{% url 'webapp:album_detail_view' photo.album.pk %}">{{ photo.album }}</a>
+        {% endif %}
+        ***
+    <a href="{% url 'webapp:photo_update_view' photo.pk %}">update</a> |
+    <a href="{% url 'webapp:photo_delete_view' photo.pk %}">delete</a>
+    </p>

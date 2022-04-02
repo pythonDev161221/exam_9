@@ -28,7 +28,7 @@ class AlbumCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse("webapp:album_list_view")
+        return reverse("webapp:photo_list_view")
 
 
 class AlbumUpdateView(LoginRequiredMixin, UpdateView):
@@ -37,7 +37,7 @@ class AlbumUpdateView(LoginRequiredMixin, UpdateView):
     form_class = AlbumForm
 
     def get_success_url(self):
-        return reverse("webapp:album_list_view")
+        return reverse("webapp:photo_list_view")
 
 
 class AlbumDeleteView(LoginRequiredMixin, DeleteView):
@@ -45,4 +45,4 @@ class AlbumDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'albums/delete.html'
 
     def get_success_url(self):
-        return reverse("webapp:album_list_view")
+        return reverse("webapp:photo_list_view")
